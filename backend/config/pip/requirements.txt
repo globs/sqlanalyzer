@@ -1,0 +1,11 @@
+psycopg2-binary
+pandas
+ratelimit
+backoff
+requests
+flask
+uuid
+redis
+flask-cors
+Flask-JWT
+sqlparse
