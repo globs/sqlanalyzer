@@ -1,0 +1,51 @@
+SET SCHEMA STAGING_<env>;
+
+DROP TABLE WRK_MANUAL_UPLOAD_DYNAMIC IF EXISTS;
+
+CREATE TABLE WRK_MANUAL_UPLOAD_DYNAMIC
+(
+    TEMP_OMEGA_TREATY_NUMBER               VARCHAR(255),
+    TEMP_OMEGA_SECTION                     VARCHAR(255),
+    TEMP_GROSS_ASSUMED_OMEGA_TREATY_NUMBER VARCHAR(255),
+    TEMP_GROSS_ASSUMED_OMEGA_SECTION       VARCHAR(255),
+    TEMP_SPLIT                             VARCHAR(255),
+    TEMP_AOC_STEP                          VARCHAR(255),
+    TEMP_SENSITIVITY_TYPE                  VARCHAR(255),
+    TEMP_SENSITIVITY_VALUE                 VARCHAR(255),
+    TEMP_POLICY_UWY                        VARCHAR(255),
+    TEMP_BUSINESS_MATURITY                 VARCHAR(255),
+    TEMP_POSITION                          VARCHAR(255),
+    TEMP_CURRENCY                          VARCHAR(255),
+    TEMP_BASIS                             VARCHAR(255),
+    TEMP_2018Q1                            VARCHAR(255),
+    TEMP_2018Q2                            VARCHAR(255),
+    TEMP_2018Q3                            VARCHAR(255),
+    TEMP_2018Q4                            VARCHAR(255),
+    TEMP_2019Q1                            VARCHAR(255),
+    TEMP_2019Q2                            VARCHAR(255),
+    TEMP_2019Q3                            VARCHAR(255),
+    TEMP_2019Q4                            VARCHAR(255),
+    TEMP_2020Q1                            VARCHAR(255),
+    TEMP_2020Q2                            VARCHAR(255),
+    TEMP_2020Q3                            VARCHAR(255),
+    TEMP_2020Q4                            VARCHAR(255),
+    TEMP_2021Q1                            VARCHAR(255),
+    TEMP_2021Q2                            VARCHAR(255),
+    TEMP_2021Q3                            VARCHAR(255),
+    TEMP_2021Q4                            VARCHAR(255),
+    TEMP_2022Q1                            VARCHAR(255),
+    TEMP_2022Q2                            VARCHAR(255),
+    TEMP_2022Q3                            VARCHAR(255),
+    TEMP_2022Q4                            VARCHAR(255),
+    TEMP_2023Q1                            VARCHAR(255),
+    TEMP_2023Q2                            VARCHAR(255),
+    TEMP_2023Q3                            VARCHAR(255),
+    TEMP_2023Q4                            VARCHAR(255),
+    TEMP_2024Q1                            VARCHAR(255),
+    TEMP_2024Q2                            VARCHAR(255),
+    TEMP_2024Q3                            VARCHAR(255),
+    TEMP_2024Q4                            VARCHAR(255),
+    TEMP_2025                              VARCHAR(255),
+    LINE_NUMBER                            VARCHAR(255)
+)
+    ORGANIZE BY COLUMN IN TBS_<env> DISTRIBUTE ON RANDOM;

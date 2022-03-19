@@ -1,0 +1,13 @@
+/sql/DWH/incremental/V_ORC_OMEGA_DISCOUNT.sql
+/sql/DWH/incremental/V_ORC_OMEGA_FWD.sql
+/sql/DWH/incremental/V_ORC_OMEGA_LKR.sql
+/sql/DWH/incremental/V_ORC_OMEGA_RA.sql
+/sql/DWH/incremental/V_ORC_OMEGA_RATIO.sql
+/sql/DWH/incremental/V_CONTROL_STATS_CODES.sql
+/sql/DWH/incremental/V_CONTROL_STATS_I17_ATTRIBUTE_GROUP.sql
+/sql/DWH/incremental/V_CONTROL_STATS_I17_ATTRIBUTE_LOCAL.sql
+/sql/DWH/incremental/V_CONTROL_STATS_I17_ATTRIBUTE_PARENT.sql
+/sql/DWH/incremental/V_CONTROL_STATS_I17_PRODUCT.sql
+/sql/DWH/incremental/V_CONTROL_STATS_OMEGA.sql
+/sql/DWH/incremental/V_CONTROL_STATS_POST_DIP_SAS.sql
+/sql/DWH/incremental/V_CONTROL_STATS_POST_SAS_DIP.sql

@@ -1,0 +1,42 @@
+SET SCHEMA STAGING_<env>;
+
+DROP TABLE WRK_RISK_ADJUSTMENT_FACTOR_PARAM IF EXISTS;
+
+CREATE TABLE WRK_RISK_ADJUSTMENT_FACTOR_PARAM
+(    
+    SUBSIDIARY_CODE                 SMALLINT,
+    LEDGER_CODE                     SMALLINT,
+    REGION_CODE                     CHARACTER(12),
+    TREATY_LIFE_CHARACTERISTIC_CODE CHARACTER(8),
+    FINANCING_TYPE_CODE             CHARACTER(20),
+    IAS39_CODE                      SMALLINT,
+    USGAAP_CODE                     INTEGER,
+    COINSURANCE_CODE                CHARACTER(8),
+    TYPE_OF_BUSINESS_CODE           SMALLINT,
+    OMEGA_LOB_CODE                  CHARACTER(8)  NOT NULL,
+    GUARANTEE_CODE                  CHARACTER(12) NOT NULL,
+    POLICY_TYPE_CODE                CHARACTER(12),
+    NATURE_CODE                     CHARACTER(16),
+    BASIS_TYPE                      VARCHAR(3),
+    COUNTER_PARTY_ID                CHARACTER(40),
+    ACTUARIALMODELTYPE_CODE         SMALLINT,
+    CLIENT_ID                       CHARACTER(40),
+    TERMTYPE_CODE                   SMALLINT,
+    BUSINESSMATURITY_CODE           VARCHAR(16),
+    BUSINESSMATURITY_FLAG           VARCHAR(1),
+    MARKET_UNIT_CODE                SMALLINT,
+    LEVELOFANALYSIS_CODE            VARCHAR(32)   NOT NULL,
+    CSM_CASHFLOW_LEGS_CODE          VARCHAR(32)   NOT NULL,
+    PV_FLAG                         BOOLEAN       NOT NULL,
+    PERIOD_ID                       SMALLINT      NOT NULL,
+    RA_PERIOD                       SMALLINT      NOT NULL,
+    RA_YEAR                         SMALLINT      NOT NULL,
+    RA_FACTOR                       DECFLOAT(16)  NOT NULL,
+    CLOSING_DATE                    DATE,
+    REPORTING_BASIS_CODE            VARCHAR(16),
+    IFRS17_PORTFOLIO                VARCHAR(40),
+    IFRS17_SUB_PORTFOLIO            VARCHAR(40),
+    INITIAL_PROFITABILITY           CHAR(20),
+    TRANSITION_MODE                 CHAR(20)
+)
+    ORGANIZE BY COLUMN IN TBS_<env> DISTRIBUTE ON RANDOM;

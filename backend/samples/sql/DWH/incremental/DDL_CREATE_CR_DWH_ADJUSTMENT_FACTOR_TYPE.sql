@@ -1,0 +1,20 @@
+DROP TABLE DWH_ADJUSTMENT_FACTOR_TYPE IF EXISTS;
+
+CREATE TABLE DWH_ADJUSTMENT_FACTOR_TYPE (
+   ID                   SMALLINT              
+      NOT NULL,
+   CODE                 VARCHAR(32)           
+      NOT NULL,
+   NAME                 VARCHAR(64)           
+      NOT NULL,
+   CREATED_DATE         TIMESTAMP              DEFAULT CURRENT_TIMESTAMP
+,
+   CONSTRAINT PK_DWH_ADJUSTMENT_FACTOR_TYPE PRIMARY KEY (ID)  
+)
+ in TBS_<env>;
+
+COMMENT ON TABLE DWH_ADJUSTMENT_FACTOR_TYPE IS
+'Type of the Adusment Factor depends on the Parameter Type';
+
+COMMENT ON COLUMN DWH_ADJUSTMENT_FACTOR_TYPE.CREATED_DATE IS
+'System generated date';

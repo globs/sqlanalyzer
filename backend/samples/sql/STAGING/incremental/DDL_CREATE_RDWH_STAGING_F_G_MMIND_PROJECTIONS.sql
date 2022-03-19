@@ -1,0 +1,27 @@
+SET SCHEMA STAGING_<env>;
+
+DROP TABLE STAGING_F_G_MMIND_PROJECTIONS IF EXISTS;
+
+CREATE TABLE STAGING_F_G_MMIND_PROJECTIONS
+(
+    CLOSING_DATE                      VARCHAR(255),
+    MODELLING_REGION                  VARCHAR(255),
+    PRODUCTIVE_NONPRODUCTIVE          VARCHAR(255),
+    OMEGA_TREATY_NUMBER               VARCHAR(255),
+    OMEGA_SECTION                     VARCHAR(255),
+    GROSS_ASSUMED_OMEGA_TREATY_NUMBER VARCHAR(255),
+    GROSS_ASSUMED_OMEGA_SECTION       VARCHAR(255),
+    AOC_STEP                          VARCHAR(255),
+    SENSITIVITY_TYPE                  VARCHAR(255),
+    SENSITIVITY_VALUE                 VARCHAR(255),
+    POLICY_UWY                        VARCHAR(255),
+    BUSINESS_MATURITY                 VARCHAR(255),
+    POSITION                          VARCHAR(255),
+    CURRENCY                          VARCHAR(255),
+    REPORTING_BASIS_TYPE              VARCHAR(255),
+    PERIOD                            VARCHAR(255),
+    PERIOD_DESCRIPTION                VARCHAR(255),
+    PROJECTION_AMOUNT                 VARCHAR(255),
+    LINE_NUMBER                       VARCHAR(255)
+)
+   ORGANIZE BY COLUMN IN TBS_<env> DISTRIBUTE ON RANDOM;		

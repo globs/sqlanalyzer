@@ -1,0 +1,37 @@
+SET SCHEMA STAGING_<env>;
+
+DROP TABLE WRK_PROJECTION_FACT IF EXISTS;
+
+CREATE TABLE WRK_PROJECTION_FACT (
+    CONTRACT_NUMBER          CHAR(9)         NOT NULL,
+    UNDERWRITING_YEAR        SMALLINT        NOT NULL,
+    SECTION_NUMBER           SMALLINT        NOT NULL,
+    UNDERWRITING_ORDER       SMALLINT        ,
+    ENDORSEMENT_NUMBER       SMALLINT        ,
+    POLICY_UW_YEAR           SMALLINT        ,
+    CLOSING_DATE             DATE            NOT NULL,
+    VALUATION_DATE           DATE            NOT NULL,
+    BUSINESS_MATURITY_ID     SMALLINT        NOT NULL,
+    REPORTING_BASIS_ID       SMALLINT        NOT NULL,
+    ASSUMED_CONTRACT_NUMBER  CHAR(9)         ,    
+    ASSUMED_SECTION_NUMBER   SMALLINT        ,   
+    POSITION_ID              INTEGER         NOT NULL,
+    LEVEL_OF_ANALYSIS_ID     INTEGER         NOT NULL,
+    SCENARIO_TYPE_ID         INTEGER         NOT NULL,
+    SCENARIO_PARAMETER       DECIMAL(10,6)   NOT NULL,
+    CURRENCY_CODE            CHAR(3)         NOT NULL,
+    SPLIT_TYPE_ID            SMALLINT        ,   
+    PROJECTION_YEAR          SMALLINT        NOT NULL,
+    PROJECTION_MONTH         SMALLINT        NOT NULL,
+    PROJECTION_DATE          DATE            NOT NULL,
+    PERIOD_TYPE_ID           SMALLINT        NOT NULL,
+    ORIGINAL_PERIOD_TYPE_ID  SMALLINT        , 
+    AMOUNT                   DECFLOAT        NOT NULL,
+    IS_IPDS                  BOOLEAN         NOT NULL,
+    IS_COMPOSITE             BOOLEAN         NOT NULL,
+    IS_DELTA                 BOOLEAN         NOT NULL,
+    IS_CSM                   BOOLEAN         NOT NULL,
+    REQUEST_ID               BIGINT,
+    AOC_RULE_CD              VARCHAR(4)
+)
+ORGANIZE BY COLUMN IN TBS_<env> DISTRIBUTE ON RANDOM;

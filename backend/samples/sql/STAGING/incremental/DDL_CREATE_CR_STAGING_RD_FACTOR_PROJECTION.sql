@@ -1,0 +1,23 @@
+SET SCHEMA STAGING_<env>;
+
+DROP TABLE STAGING_RD_FACTOR_PROJECTION IF EXISTS;
+
+CREATE TABLE STAGING_RD_FACTOR_PROJECTION
+(
+    LINE_NUMBER                  VARCHAR(255),
+    CONTRACT_NUMBER              VARCHAR(255),
+    SECTION_NUMBER               VARCHAR(255),
+    UWY                          VARCHAR(255),
+    AOC_STEP                     VARCHAR(255),
+    CSM_CASHFLOW                 VARCHAR(255),
+    PV_FLAG                      VARCHAR(255),
+    PERIOD_ID                    VARCHAR(255),
+    PERIOD                       VARCHAR(255),
+    YEAR                         VARCHAR(255),
+    RA_FACTOR                    VARCHAR(255),
+    GROSS_ASSUMED_TREATY_NUMBER  VARCHAR(255),
+    GROSS_ASSUMED_SECTION_NUMBER VARCHAR(255),
+    REPORTING_BASIS_CODE         VARCHAR(255),
+    CLOSING_DATE                 VARCHAR(255)
+)
+   ORGANIZE BY COLUMN IN TBS_<env> DISTRIBUTE ON RANDOM;

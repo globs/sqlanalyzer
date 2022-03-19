@@ -1,0 +1,22 @@
+SET SCHEMA STAGING_<env>;
+
+DROP VIEW V_WRK_VIEW_FOR_ILIAS;
+
+CREATE OR REPLACE VIEW V_WRK_VIEW_FOR_ILIAS AS (
+SELECT
+    *
+FROM
+    (
+    SELECT
+        * ,
+        ROW_NUMBER() OVER(PARTITION BY CTR_NF,
+        SEC_NF
+    ORDER BY
+        uwy_nf DESC) AS row_num
+    FROM
+        BI_<env>.TUWSEC
+    WHERE
+        END_D = CAST('9999-12-31-00.00.00.000000' AS TIMESTAMP)
+        AND SUPP_D = CAST('9999-12-31-00.00.00.000000' AS TIMESTAMP))
+WHERE
+    row_num = 1 );	

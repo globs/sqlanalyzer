@@ -9,12 +9,14 @@ __status__ = "Experimental"
 import logging
 import traceback
 import common.logging
-
+from sqlparser.parser import SQLParser
 
 def main():
     try:
         common.logging.init_logging()
         logging.info("Starting SQL Analyzer")
+        parser = SQLParser()
+        parser.parse_sql_script()
     except:
         logging.error(traceback.format_exc())
 

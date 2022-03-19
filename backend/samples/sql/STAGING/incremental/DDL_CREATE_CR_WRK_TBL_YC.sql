@@ -1,0 +1,16 @@
+SET SCHEMA STAGING_<env>;
+
+DROP TABLE WRK_TBL_YC IF EXISTS;
+
+CREATE TABLE WRK_TBL_YC (
+	"Maturity_Type_Code" VARCHAR(32) NOT NULL,
+	"Maturity" SMALLINT NOT NULL,
+	"Currency_Code" CHAR(3) NOT NULL,
+	"Modified_Date" DATE NOT NULL,
+	"As_Of_Date" VARCHAR(16),
+	"Name" VARCHAR(43) NOT NULL,
+	"Yield_Curve_Type" VARCHAR(32) NOT NULL,
+	"Reference_Valid_From" DATE NOT NULL,
+	"Interest_Rate" DECFLOAT
+)
+ORGANIZE BY COLUMN IN TBS_<env> DISTRIBUTE ON RANDOM;
