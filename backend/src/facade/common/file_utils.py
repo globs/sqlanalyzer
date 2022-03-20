@@ -16,7 +16,7 @@ class FileUtils:
             str_res = file_handler.read()
         return str_res
 
-    def get_files_from_folder(self, folder_fullpath):
+    def get_files_from_folder(self, folder_fullpath, extension=None):
         # assign directory
         directory = folder_fullpath
         res = []
@@ -24,5 +24,9 @@ class FileUtils:
         # that directory
         for root, dirs, files in os.walk(directory):
             for filename in files:
-                res.append(os.path.join(root, filename)) 
+                logging.debug(f'filename found {filename}')
+                if extension is not None and filename.lower().endswith(extension):
+                    res.append(os.path.join(root, filename)) 
+                elif extension is None:
+                    res.append(os.path.join(root, filename))
         return res

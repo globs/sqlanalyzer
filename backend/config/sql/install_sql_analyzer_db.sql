@@ -28,6 +28,33 @@ INSERT INTO api_data.tgen_code_value
 VALUES
 (1, 'trace message type', 1, 'Step execution');
 
+
+INSERT INTO api_data.tgen_code_value 
+(CODE_TYPE_ID, CODE_TYPE_TEXT, CODE_ID, CODE_VALUE)
+VALUES
+(2, 'trace message type', 1, 'SQL script fullname');
+
+INSERT INTO api_data.tgen_code_value 
+(CODE_TYPE_ID, CODE_TYPE_TEXT, CODE_ID, CODE_VALUE)
+VALUES
+(1, 'trace message type', 2, 'SQL filters');
+
+INSERT INTO api_data.tgen_code_value 
+(CODE_TYPE_ID, CODE_TYPE_TEXT, CODE_ID, CODE_VALUE)
+VALUES
+(1, 'trace message type', 3, 'SQL identifiers');
+
+INSERT INTO api_data.tgen_code_value 
+(CODE_TYPE_ID, CODE_TYPE_TEXT, CODE_ID, CODE_VALUE)
+VALUES
+(1, 'trace message type', 4, 'SQL joins count');
+
+
+INSERT INTO api_data.tgen_code_value 
+(CODE_TYPE_ID, CODE_TYPE_TEXT, CODE_ID, CODE_VALUE)
+VALUES
+(1, 'trace message type', 6, 'SQL Subselect count');
+
 INSERT INTO api_data.tgen_code_value 
 (CODE_TYPE_ID, CODE_TYPE_TEXT, CODE_ID, CODE_VALUE)
 VALUES
@@ -53,3 +80,7 @@ MESSAGE_TYPE_ID     INTEGER,
 MESSAGE_TEXT        TEXT
 );
 
+INSERT INTO api_data.tgen_code_value 
+(MESSAGE_LEVEL, MESSAGE_TYPE_ID, MESSAGE_TEXT)
+VALUES
+(2, 1, 'dffff');

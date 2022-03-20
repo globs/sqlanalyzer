@@ -36,8 +36,8 @@ services:
       dockerfile: Dockerfile
     networks:
       - sql_analyzer-network
-#    depends_on:
-#      - "postgres-sql_analyzer"
+    depends_on:
+      - "postgres-sql_analyzer"
     command: python3.8 ./main.py
 
 
