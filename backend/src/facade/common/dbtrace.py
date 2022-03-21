@@ -13,15 +13,30 @@ class DbTrace:
         logging.debug('Destructing dbtrace')
     
     @dbconnector
-    def trace_to_db(cnn, self, message_level, message_type, message):
-        logging.info('Parsing SQL Query')
+    def trace_to_db(cnn, self, uuid, message_level, message_type, message):
         sql = f"""
         INSERT INTO api_data.trun_traces  
-        (MESSAGE_LEVEL, MESSAGE_TYPE_ID, MESSAGE_TEXT)
+        (UUID, MESSAGE_LEVEL, MESSAGE_TYPE_ID, MESSAGE_TEXT)
         VALUES
-        ({message_level}, {message_type}, '{message}');
+        ('{uuid}', {message_level}, {message_type}, '{message}');
 
         """
+        logging.debug(f'Trace Query: {sql}')
+        cursor = cnn.cursor()
+        cursor.execute(sql)    
+        cnn.commit()
+        cursor.close()   
+
+    @dbconnector
+    def resutls_to_db(cnn, self, filename, uuid, analyzer_id, key, value, data_type):
+        sql = f"""
+        INSERT INTO api_data.tsql_analysis_traces  
+        (FILENAME, UUID,ANALYZER_ID,ANALYZER_KEY,ANALYZER_VALUE,VALUE_TYPE)
+        VALUES
+        ('{filename}', '{uuid}', {analyzer_id}, '{key}', '{value}', '{data_type}');
+
+        """
+        logging.debug(f'Trace Query: {sql}')
         cursor = cnn.cursor()
         cursor.execute(sql)    
         cnn.commit()

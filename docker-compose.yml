@@ -34,11 +34,13 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    ports:
+      - 4000:4000
     networks:
       - sql_analyzer-network
     depends_on:
       - "postgres-sql_analyzer"
-    command: python3.8 ./main.py
+    command: python3.8 ./main_rest.py
 
 
     

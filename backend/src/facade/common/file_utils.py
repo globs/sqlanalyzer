@@ -1,7 +1,7 @@
 
 import logging, os
 from common.dbconnector import dbconnector
-
+from pathlib import Path
 
 class FileUtils:
 
@@ -30,3 +30,6 @@ class FileUtils:
                 elif extension is None:
                     res.append(os.path.join(root, filename))
         return res
+
+    def file_size(self, filefullpath):
+        return Path(filefullpath).stat().st_size

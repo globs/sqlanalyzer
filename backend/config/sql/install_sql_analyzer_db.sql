@@ -75,6 +75,7 @@ create  UNLOGGED table api_data.trun_traces
 (
 ID                  SERIAL PRIMARY KEY,
 TS                  TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+UUID                TEXT,
 MESSAGE_LEVEL       INTEGER,
 MESSAGE_TYPE_ID     INTEGER,
 MESSAGE_TEXT        TEXT
@@ -84,3 +85,29 @@ INSERT INTO api_data.tgen_code_value
 (MESSAGE_LEVEL, MESSAGE_TYPE_ID, MESSAGE_TEXT)
 VALUES
 (2, 1, 'dffff');
+
+-- analysis jobs duration
+select message_text ,
+min(case when message_type_id = 1 then ts else null end),
+max(case when message_type_id = 2 then ts else null end),
+max(case when message_type_id = 2 then ts else null end) - min(case when message_type_id = 1 then ts else null end),
+count(*) 
+from api_data.trun_traces a
+where a.message_level = 2
+group by 
+a.message_text 
+order by 4 desc nulls first;
+
+
+drop table if exists  api_data.tsql_analysis_traces;
+create  UNLOGGED table api_data.tsql_analysis_traces 
+(
+ID                  SERIAL PRIMARY KEY,
+TS                  TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+FILENAME            TEXT,
+UUID                TEXT,
+ANALYZER_ID         INT,
+ANALYZER_KEY        TEXT,
+ANALYZER_VALUE      TEXT,
+VALUE_TYPE          TEXT
+);
