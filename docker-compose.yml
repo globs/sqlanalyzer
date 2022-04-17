@@ -15,6 +15,7 @@ services:
     volumes:
       - sql_analyzer_pg_storage:/var/lib/postgresql/data
 
+
   grafana-sql_analyzer:
     image: grafana/grafana:latest
     container_name: grafana
@@ -40,7 +41,13 @@ services:
       - sql_analyzer-network
     depends_on:
       - "postgres-sql_analyzer"
+    volumes:
+      - type: bind
+        source: /home/ubuntu/my_projects/sqlanalyzer/sqlanalyzer/backend/src/logs
+        target: /home/sql_analyzer/project/src/logs/
+ #     - sql_analyzer_log_storage
     command: python3.8 ./main_rest.py
+      #gunicorn --workers 3 --bind 0.0.0.0:4000 wsgi:app 
 
 
     
@@ -49,6 +56,8 @@ volumes:
   sql_analyzer_data_storage:
   sql_analyzer_grafana_storage:
   sql_analyzer_pg_storage:
+  #sql_analyzer_log_storage:
+
 
 networks:
   sql_analyzer-network:

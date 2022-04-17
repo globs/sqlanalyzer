@@ -9,7 +9,8 @@ def dbconnector(func):
                                   password = common.settings.pg_password,
                                   host = common.settings.pg_host,
                                   port = common.settings.pg_port,
-                                  database = common.settings.pg_app_db)
+                                  database = common.settings.pg_app_db,
+                                  options="-c search_path=dbo,public,api_data")
                                   
         cnn.autocommit=True
         try:

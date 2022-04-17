@@ -105,6 +105,7 @@ create  UNLOGGED table api_data.tsql_analysis_traces
 ID                  SERIAL PRIMARY KEY,
 TS                  TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 FILENAME            TEXT,
+QUERY               TEXT,
 UUID                TEXT,
 ANALYZER_ID         INT,
 ANALYZER_KEY        TEXT,

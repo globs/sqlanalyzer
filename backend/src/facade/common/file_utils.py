@@ -33,3 +33,23 @@ class FileUtils:
 
     def file_size(self, filefullpath):
         return Path(filefullpath).stat().st_size
+
+    # Python code to find frequency of each word
+    def word_freq(self, str):
+    
+        # break the string into list of words 
+        cleaned_str =str.replace("'", " ").replace(",", " ").replace(";", " ").replace("(", " ").replace(")", " ")
+        words = cleaned_str.split()         
+        res = []
+        frequencies = []
+        # loop till string values present in list str
+        for i in words:             
+            # checking for the duplicacy
+            if i not in res:
+                # insert value in str2
+                res.append(i) 
+        for i in range(0, len(res)):
+            # count the frequency of each word(present 
+            # in str2) in str and print
+            frequencies.append({ "word": res[i], "freq" : str.count(res[i])})  
+        return frequencies

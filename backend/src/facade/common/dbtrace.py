@@ -26,18 +26,24 @@ class DbTrace:
         cursor.execute(sql)    
         cnn.commit()
         cursor.close()   
+        cnn.close()
 
     @dbconnector
-    def resutls_to_db(cnn, self, filename, uuid, analyzer_id, key, value, data_type):
-        sql = f"""
-        INSERT INTO api_data.tsql_analysis_traces  
-        (FILENAME, UUID,ANALYZER_ID,ANALYZER_KEY,ANALYZER_VALUE,VALUE_TYPE)
-        VALUES
-        ('{filename}', '{uuid}', {analyzer_id}, '{key}', '{value}', '{data_type}');
+    def resutls_to_db(cnn, self, filename, query, uuid, analyzer_id, key, value, data_type):
+        try:
+            sql = f"""
+            INSERT INTO api_data.tsql_analysis_traces  
+            (FILENAME,QUERY,  UUID,ANALYZER_ID,ANALYZER_KEY,ANALYZER_VALUE,VALUE_TYPE)
+            VALUES
+            ('{filename}', '{query}', '{uuid}', {analyzer_id}, '{key}', '{value}', '{data_type}');
 
-        """
-        logging.debug(f'Trace Query: {sql}')
-        cursor = cnn.cursor()
-        cursor.execute(sql)    
-        cnn.commit()
-        cursor.close()   
+            """
+            logging.debug(f'Trace Query: {sql}')
+            cursor = cnn.cursor()
+            cursor.execute(sql)    
+            cnn.commit()
+            cursor.close()
+            cnn.close()
+        except:
+            logging.error(f'Database connection error: {e}')
+            raise
