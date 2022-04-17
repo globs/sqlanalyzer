@@ -3,7 +3,6 @@ import logging
 import common.settings
 from common.dbconnector import dbconnector
 
-
 class DbTrace:
 
     def __init__(self):
